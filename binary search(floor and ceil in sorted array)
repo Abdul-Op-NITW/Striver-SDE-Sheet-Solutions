@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> getFloorAndCeil(vector<int> nums, int x) {
+        vector<int> a;
+        vector<int> b;
+        vector<int> c(2);
+   for(int i:nums){
+    if(i<=x) a.push_back(i);
+    if(i>=x) b.push_back(i);
+    }
+    int ma = -1; 
+    int mi = -1;
+    if (!b.empty()){
+    auto min_it = min_element(b.begin(), b.end());
+     mi=*min_it;}
+    if (!a.empty()){
+    auto max_it = max_element(a.begin(), a.end());
+     ma=*max_it;}
+    c[0]=ma;
+    c[1]=mi;
+    return c;}
+};
