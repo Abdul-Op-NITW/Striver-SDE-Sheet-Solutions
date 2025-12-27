@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int kthElement(vector<int> &a, vector<int>& b, int k) {
+   vector<int> c;
+   for(int i:a) c.push_back(i);
+   for(int i:b) c.push_back(i);
+   sort(c.begin(),c.end());
+   return c[k-1];
+  }
+};
