@@ -1,0 +1,35 @@
+class Solution {
+public:
+    long long Pow(int b, int exp, int M) {
+        long long ans = 1;
+        long long base = b;
+
+        while (exp > 0) {
+            if (exp % 2 == 1) {
+                ans *= base;
+                if (ans > M) return ans; // 🔧 added
+            }
+            exp /= 2;
+            if (exp) {
+                base *= base;
+                if (base > M) return base; // 🔧 added
+            }
+        }
+        return ans;
+    }
+
+    int NthRoot(int N, int M) {
+        int left = 1;
+        int right = M;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            long long val = Pow(mid, N, M);  // 🔧 changed call
+
+            if (val == M) return mid;
+            else if (val < M) left = mid + 1;
+            else right = mid - 1;
+        }
+        return -1;
+    }
+};
