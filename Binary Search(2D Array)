@@ -1,0 +1,16 @@
+class Solution{
+public:
+    bool searchMatrix(vector<vector<int>> &mat, int t){
+        int r=mat.size();
+        int c=mat[0].size();
+        int low=0;int high=r*c-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            int r1=mid/c;int c1=mid%c;
+            if(mat[r1][c1]==t) return true;
+            else if(mat[r1][c1]<t) low=mid+1;
+            else high=mid-1;
+        }
+        return false;
+    }
+};
